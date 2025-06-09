@@ -52,8 +52,8 @@ void show_stat(Animal *animal)
     return 0;
 }*/
 
-int main()
-{
+//int main()
+//{
     /*Animal *list[10];
     int animal_num = 0;
 
@@ -126,4 +126,117 @@ int main()
     /*std::cout << "Hello World!" << std::endl;
     std::cout <<"hi" << std::endl << "my name is" << "Psi" << std::endl;
     return 0;*/
-}
+//}
+
+/*class Animal
+{
+private:
+    int food;
+    int weight;
+
+public:
+    void set_animal(int _food, int _weight)
+    {
+        food = _food;
+        weight = _weight;
+    }
+};
+
+int main()
+{
+    Animal animal;
+    animal.set_animal(1, 10);
+
+    return 0;
+}*/
+
+/*class Date
+{
+    int year_;
+    int month_;
+    int day_;
+
+    // 윤년 판단 함수
+    bool IsLeapYear(int year) const
+    {
+        return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+    }
+
+    // 각 달의 최대 일수를 반환
+    int GetMaxDay(int year, int month) const
+    {
+        static const int days_in_month[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        if (month == 2 && IsLeapYear(year))
+        {
+            return 29;
+        }
+        return days_in_month[month];
+    }
+    
+    public:
+    void SetDate(int year, int month, int date)
+    {
+        year_ = year;
+        month_ = month;
+        day_ = date;
+    }
+    
+    void AddDay(int inc)
+    {
+        day_ += inc;
+        while (true)
+        {
+            int max_day = GetMaxDay(year_, month_);
+            if (day_ <= max_day)
+                break;
+            day_ -= max_day;
+            AddMonth(1); // 월 + 1, 연도 보정
+        }
+    }
+    
+    void AddMonth(int inc)
+    {
+        month_ += inc;
+        while (month_ > 12)
+        {
+            month_ -= 12;
+            AddYear(1);
+        }
+        // 현재 월의 최대일보다 날짜가 크면 보정
+        int max_day = GetMaxDay(year_, month_);
+        if (day_ > max_day)
+        {
+            day_ = max_day;
+        }
+    }
+    
+    void AddYear(int inc)
+    {
+        year_ += inc;
+        if (month_ == 2 && 29 && IsLeapYear(year_))
+        {
+            day_ = 28; // 윤년 아님 -> 2월 28일로 보정
+        }
+    }
+
+    void ShowDate()
+    {
+        std::cout << year_ << "/" << month_ << "/" << day_ << std::endl;
+    }
+};
+
+int main()
+{
+    Date date;
+    date.SetDate(2012,2,28);
+    date.AddDay(3);
+    date.ShowDate();
+
+    date.AddMonth(10);
+    date.ShowDate();
+
+    date.AddYear(1);
+    date.ShowDate();
+
+    return 0;
+}*/
