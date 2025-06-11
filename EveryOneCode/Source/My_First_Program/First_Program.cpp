@@ -1,5 +1,6 @@
 #include "First_Program.h"
 #include <iostream>
+#include <stdexcept>
 
 /*typedef struct Animal
 {
@@ -239,4 +240,33 @@ int main()
     date.ShowDate();
 
     return 0;
+}*/
+
+/*class Date
+{
+public:
+    Date() = default;
+    explicit Date(int month, int day);
+
+    void print() const { std::cout << month_ << "/" << day_ << std::endl; }
+
+private:
+    int month_{1};
+    int day_{1};
+};
+
+Date::Date(int month, int day)
+    : month_{month}, day_{day}
+{
+    std::cout << "인자 2개인 생성자 호출" << std::endl;
+    if (month < 1 || month > 12 || day < 1 || day > 31)
+        throw std::out_of_range("잘못된 날짜");
+}
+
+int main()
+{
+    Date today;
+    Date piDay(3,14);
+    today.print();
+    piDay.print();
 }*/
