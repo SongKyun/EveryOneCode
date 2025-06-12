@@ -1,6 +1,5 @@
-#include "First_Program.h"
+﻿#include "First_Program.h"
 #include <iostream>
-#include <stdexcept>
 
 /*typedef struct Animal
 {
@@ -270,3 +269,101 @@ int main()
     today.print();
     piDay.print();
 }*/
+
+/*class Point
+{
+    int x, y;
+
+public:
+    Point(int pos_x, int pos_y) : x(pos_x), y(pos_y) {}
+
+    int GetX() const { return x; }
+    int GetY() const { return y; }
+
+    double Distance(const Point &other) const
+    { return sqrt(pow(x-other.x, 2) + pow(y-other.y, 2)); }
+};
+
+class Geometry
+{
+public:
+    Geometry() : num_points(0) {}
+
+    void AddPoint(const Point &point)
+    {
+        if (num_points >= 100)
+        {
+            std::cout << "더 이상 점을 추가할 수 없다." << std::endl;
+            return;
+        }
+        point_array[num_points++] = new Point(point.GetX(), point.GetY());
+    }
+
+    void PrintDistance()
+    {
+        for (int i = 0; i < num_points; ++i)
+        {
+            for (int j = 0; j < num_points; ++j)
+            {
+                double dist = point_array[i]->Distance(*point_array[j]);
+                std::cout << "점 " << i << "과 점" << j << " 사이 거리: " << dist << std::endl;
+            }
+        }
+    }
+
+    void PrintNumMeets()
+    {
+        int count = 0;
+        // 모든 점쌍 조합으로 직선 생성
+        for (int i = 0; i < num_points; ++i)
+        {
+            for (int j = i + 1; j < num_points; ++j)
+            {
+                Point *p1 = point_array[i];
+                Point *p2 = point_array[j];
+
+                int a = p1->GetY() - p2->GetY();
+                int b = p2->GetX() - p1->GetX();
+                int c = p1->GetX() * p2->GetY() - p1->GetY() * p2->GetX();
+
+                // 만들어진 직선과 나머지 점쌍을 비교
+                for (int k = 0; k < num_points; ++k)
+                {
+                    for (int l = k + 1; l < num_points; ++l)
+                    {
+                        if ((k == i) || (l == j) || (k == j && l == j)) continue;
+
+                        int f1 = a * point_array[k]->GetX() + b * point_array[k]->GetY() + c;
+                        int f2 = a * point_array[l]->GetX() + b * point_array[l]->GetY() + c;
+
+                        if (f1 * f2 < 0)
+                        {
+                            ++count;
+                        }
+                    }
+                }
+            }
+        }
+        // 실제 교점 수는 중복 제거 필요 (보정)
+        std::cout << "직선들 간의 교점 개수 (추정치) : " << count / 2 << std::endl;
+    }
+
+~Geometry() { for (int i = 0; i < num_points; ++i) { delete point_array[i]; } }
+    
+private:
+    Point *point_array[100];
+    int num_points;
+};
+
+int main() {
+    Geometry geo;
+    geo.AddPoint(Point(0, 0));
+    geo.AddPoint(Point(1, 1));
+    geo.AddPoint(Point(1, 0));
+    geo.AddPoint(Point(0, 1));
+
+    geo.PrintDistance();
+    geo.PrintNumMeets();
+    return 0;
+}*/
+
