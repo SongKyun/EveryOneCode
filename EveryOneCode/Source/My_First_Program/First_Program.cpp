@@ -367,3 +367,89 @@ int main() {
     return 0;
 }*/
 
+/*#include <vector>
+#include <memory>     // unique_ptr
+#include <cmath>      // sqrt, pow
+
+// Point 클래스: 2차원 좌표를 저장하고 거리 계산 기능 제공
+class Point {
+    int x, y;
+
+public:
+    Point(int pos_x, int pos_y) : x(pos_x), y(pos_y) {}
+
+    int GetX() const { return x; }
+    int GetY() const { return y; }
+
+    // 다른 점과의 거리 계산
+    double Distance(const Point& other) const {
+        return std::sqrt(std::pow(x - other.x, 2) + std::pow(y - other.y, 2));
+    }
+};
+
+// Geometry 클래스: 여러 점을 관리하며 기하 연산을 수행
+class Geometry {
+public:
+    // 점을 추가하는 함수
+    void AddPoint(const Point& point) {
+        points.emplace_back(std::make_unique<Point>(point));
+    }
+
+    // 모든 점들 간의 거리를 출력
+    void PrintDistance() const {
+        for (size_t i = 0; i < points.size(); ++i) {
+            for (size_t j = i + 1; j < points.size(); ++j) {
+                double dist = points[i]->Distance(*points[j]);
+                std::cout << "점 " << i << "과 점 " << j << " 사이 거리: " << dist << std::endl;
+            }
+        }
+    }
+
+    // 모든 점쌍으로 생성되는 직선들의 교점 개수를 출력 (정확한 교점 계산 아님)
+    void PrintNumMeets() const {
+        int count = 0;
+
+        for (size_t i = 0; i < points.size(); ++i) {
+            for (size_t j = i + 1; j < points.size(); ++j) {
+                const auto& p1 = points[i];
+                const auto& p2 = points[j];
+
+                int a = p1->GetY() - p2->GetY();
+                int b = p2->GetX() - p1->GetX();
+                int c = p1->GetX() * p2->GetY() - p2->GetX() * p1->GetY();
+
+                for (size_t k = 0; k < points.size(); ++k) {
+                    for (size_t l = k + 1; l < points.size(); ++l) {
+                        if ((k == i && l == j) || (k == j && l == i)) continue;
+
+                        int f1 = a * points[k]->GetX() + b * points[k]->GetY() + c;
+                        int f2 = a * points[l]->GetX() + b * points[l]->GetY() + c;
+
+                        if (f1 * f2 < 0) {
+                            ++count;
+                        }
+                    }
+                }
+            }
+        }
+
+        std::cout << "직선들 간의 교점 개수 (추정치): " << count / 2 << std::endl;
+    }
+
+private:
+    // unique_ptr로 점 객체들을 관리 → 메모리 자동 해제
+    std::vector<std::unique_ptr<Point>> points;
+};
+
+int main() {
+    Geometry g;
+    g.AddPoint(Point(0, 0));
+    g.AddPoint(Point(1, 0));
+    g.AddPoint(Point(0, 1));
+    g.AddPoint(Point(1, 1));
+
+    g.PrintDistance();
+    g.PrintNumMeets();
+
+    return 0;
+}*/
